@@ -1,0 +1,47 @@
+﻿@model List<FoodDto>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="mb-4">
+    <h3 style="color:black; text-align:center">Yemek Listesi</h3>
+</div>
+<table class="table table-bordered">
+    <tr>
+        <td width="5%">#</td>
+        <td width="30%">Yemek</td>
+        <td width="30%">Kategori</td>
+        <td width="20%">Fiyat</td>
+        <td width="15%">Durum</td>
+        <td width="10%">Sil</td>
+        <td width="14%">Güncelle</td>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.FoodID</td>
+            <td>@item.Name</td>
+            <td>@item.Categorydto.Name</td>
+            <td>@item.Price</td>
+            @if (item.Status)
+            {
+                <td>Aktif</td>
+            }
+            else
+            {
+                <td>Pasif</td>
+            }
+            <td>
+                <a class="btn btn-outline-danger" href="/Admin/_Food/DeleteFood/@item.FoodID">Sil</a>
+            </td>
+            <td>
+                <a class="btn btn-outline-success" href="/Admin/_Food/EditFood/@item.FoodID">Düzenle</a>
+            </td>
+        </tr>
+    }
+</table>
+<br />
+<div>
+<a class="btn btn-outline-dark float-end" style="width:10%" href="/Admin/_Food/AddFood/">Yeni Yemek</a>
+</div>

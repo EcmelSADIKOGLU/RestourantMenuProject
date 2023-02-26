@@ -42,7 +42,7 @@ namespace RestourantMenuAPI.Controllers
             return BadRequest();
         }
 
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
             _categoryService.Delete(id);

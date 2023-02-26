@@ -44,7 +44,7 @@ namespace RestourantMenuAPI.Controllers
             return NoContent();
         }
 
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public IActionResult Delete(int id) 
         { 
             _foodService.Delete(id);

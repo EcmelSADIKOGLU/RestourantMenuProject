@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+@await Html.PartialAsync("/Areas/Admin/Views/_AdminLayout/_HeadPartial.cshtml")
+
+<body>
+
+    @await Html.PartialAsync("/Areas/Admin/Views/_AdminLayout/_NavbarPartial.cshtml")
+    <!-- End Header -->
+    <section id="hero">
+        <div class="hero-container">
+            <div id="heroCarousel" data-bs-interval="5000" class="carousel slide carousel-fade" data-bs-ride="carousel">
+
+                <br /><br /><br /><br /><br /><br /><br />
+
+
+                <div style="width:80%; margin-left:10%">
+                    <div class="card" style="padding:3%">
+                        @RenderBody()
+                    </div>   
+                </div>
+                
+            </div>
+        </div>
+    </section><!-- End Hero -->
+    @await Html.PartialAsync("/Areas/Admin/Views/_AdminLayout/_FooterPartial.cshtml")
+
+    @await Html.PartialAsync("/Areas/Admin/Views/_AdminLayout/_ScriptPartial.cshtml")
+   
+
+</body>
+
+</html>

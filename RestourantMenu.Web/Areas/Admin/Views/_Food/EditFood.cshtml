@@ -1,0 +1,42 @@
+﻿@model FoodDto
+@{
+    ViewData["Title"] = "EditFood";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="mb-4">
+    <h3 style="color:black; text-align:center">Yemek Düzenle</h3>
+</div>
+
+<form class="form-control" method="post">
+
+    <div style="padding : 3%">
+
+        <input asp-for="FoodID" hidden />
+
+        @Html.DropDownListFor(m => m.CategoryID, (List<SelectListItem>)ViewBag.Categories, new { @class = "form-control" })
+        <br />
+
+        <input class="form-control" asp-for="Name" placeholder="Yemek Adı" />
+        <br />
+
+        <input class="form-control" asp-for="Description" placeholder="Açıklama" />
+        <br />
+
+        <input class="form-control" asp-for="ImageURL" placeholder="Resim Adersi" />
+        <br />
+
+        <input class="form-control" asp-for="Price" placeholder="Ücret(TL)" />
+        <br />
+
+        <div class="form-check">
+            <input class="form-check-input" asp-for="Status" id="status">
+            <label class="form-check-label" for="status">Durum</label>
+        </div>
+
+        <button class="btn btn-outline-dark float-end" type="submit">Güncelle</button>
+
+        <br />
+    </div>
+
+</form>

@@ -30,6 +30,8 @@ namespace RestourantMenuAPI
         public void ConfigureServices(IServiceCollection services)
         {
 
+
+
             services.AddScoped<IFoodService, FoodManager>();
             services.AddScoped<ICategoryService, CategoryManager>();
             services.AddScoped<ITodaysFoodService, TodaysFoodManager>();

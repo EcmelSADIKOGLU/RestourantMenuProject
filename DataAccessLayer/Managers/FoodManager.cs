@@ -36,7 +36,9 @@ namespace DataAccessLayer.Managers
                     CategoryDto categoryDto = ObjectMapper.Mapper.Map<CategoryDto>(category);
 
                     FoodDto foodDto = ObjectMapper.Mapper.Map<FoodDto>(food);
+                    foodDto.Categorydto= categoryDto;
                     foodDtos.Add(foodDto);
+
                 }
             }
             return foodDtos;
@@ -55,6 +57,7 @@ namespace DataAccessLayer.Managers
                     CategoryDto categoryDto = ObjectMapper.Mapper.Map<CategoryDto>(category);
 
                     FoodDto foodDto = ObjectMapper.Mapper.Map<FoodDto>(food);
+                    foodDto.Categorydto = categoryDto;
                     foodDtos.Add(foodDto);
                 }
             }
@@ -69,6 +72,7 @@ namespace DataAccessLayer.Managers
 
             CategoryDto categoryDto = ObjectMapper.Mapper.Map<CategoryDto>(category);
             FoodDto foodDto = ObjectMapper.Mapper.Map<FoodDto>(food);
+            foodDto.Categorydto = categoryDto;
             return foodDto;
         }
 

@@ -1,0 +1,28 @@
+﻿@model GetTodaysFoodDto
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="mb-4">
+    <h3 style="color:black; text-align:center">Günün Yemekleri</h3>
+</div>
+<form class="form-control" method="post">
+
+    <div style="padding : 3%">
+
+        @Html.DropDownListFor(m => m.Food1.FoodID, (List<SelectListItem>)ViewBag.Foods, new { @class = "form-control" })
+        <br />
+
+        @Html.DropDownListFor(m => m.Food2.FoodID, (List<SelectListItem>)ViewBag.Foods, new { @class = "form-control" })
+        <br />
+
+        @Html.DropDownListFor(m => m.Food3.FoodID, (List<SelectListItem>)ViewBag.Foods, new { @class = "form-control" })
+        <br />
+
+        <button class="btn btn-outline-dark float-end" type="submit">Güncelle</button>
+        <br />
+    </div>
+
+</form>
+

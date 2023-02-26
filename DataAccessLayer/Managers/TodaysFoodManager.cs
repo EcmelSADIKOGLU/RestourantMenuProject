@@ -23,6 +23,12 @@ namespace DataAccessLayer.Managers
         public GetTodaysFoodDto Get()
         {
             var todaysFood = _context.TodaysFoods.FirstOrDefault();
+            if (todaysFood == null)
+            {
+                _context.TodaysFoods.Add(new TodaysFood());
+                todaysFood = _context.TodaysFoods.FirstOrDefault();
+            }
+
             var food1 = _context.Foods.Find(todaysFood.FoodId1);
             var food2 = _context.Foods.Find(todaysFood.FoodId2);
             var food3 = _context.Foods.Find(todaysFood.FoodId3);

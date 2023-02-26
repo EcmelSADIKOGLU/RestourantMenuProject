@@ -1,0 +1,45 @@
+﻿@model List<CategoryDto>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="mb-4">
+    <h3 style="color:black; text-align:center">Kategori Listesi</h3>
+</div>
+
+<table class="table table-bordered">
+    <tr>
+        <td width="5%">#</td>
+        <td width="40%">Kategori</td>
+        <td width="25%">Durum</td>
+        <td width="10%">Sil</td>
+        <td width="14%">Güncelle</td>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.CategoryID</td>
+            <td>@item.Name</td>
+            @if (item.Status)
+            {
+                <td>Aktif</td>
+            }else
+            {
+                <td>Pasif</td>
+            }        
+            <td>
+                <a class="btn btn-outline-danger" href="/Admin/_Category/DeleteCategory/@item.CategoryID">Sil</a>
+            </td>
+            <td>
+                <a class="btn btn-outline-success" href="/Admin/_Category/EditCategory/@item.CategoryID">Düzenle</a>
+            </td>
+        </tr>
+    }
+</table>
+<br />
+<div>
+    <a class="btn btn-outline-dark float-end" style="width:12%" href="/Admin/_Category/AddCategory/">Yeni Kategori</a>
+</div>
+
+

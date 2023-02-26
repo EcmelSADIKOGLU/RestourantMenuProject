@@ -1,0 +1,29 @@
+﻿@model CategoryDto
+@{
+    ViewData["Title"] = "EditCategory";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="mb-4">
+    <h3 style="color:black; text-align:center">Kategori Düzenle</h3>
+</div>
+<form class="form-control" method="post">
+
+    <div style="padding : 3%">
+        
+        <input class="form-control" asp-for="CategoryID" hidden />
+        <input class="form-control" asp-for="Name" placeholder="Kategori Adı" />
+
+        <br />
+        <div class="form-check">
+            <input class="form-check-input" asp-for="Status" id="Status">
+            <label class="form-check-label" for="Status">Durum</label>
+        </div>
+
+        <button class="btn btn-outline-dark float-end" type="submit">Güncelle</button>
+
+        <br />
+    </div>
+
+</form>
+

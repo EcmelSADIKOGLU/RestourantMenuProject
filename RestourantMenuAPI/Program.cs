@@ -1,5 +1,7 @@
+﻿using DataAccessLayer.Services;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using System;
@@ -13,7 +15,27 @@ namespace RestourantMenuAPI
     {
         public static void Main(string[] args)
         {
-            CreateHostBuilder(args).Build().Run();
+            var host = CreateHostBuilder(args).Build();
+            using (var scope = host.Services.CreateScope())
+            {
+                var serviceProvider = scope.ServiceProvider;
+                var categoryService = serviceProvider.GetRequiredService<ICategoryService>();
+                if (categoryService.GetAll() == null)
+                {
+                    categoryService.Create(new DataAccessLayer.Dtos.CategoryDto() { Name = "Tatlı", Status = true });
+                    categoryService.Create(new DataAccessLayer.Dtos.CategoryDto() { Name = "Çorba", Status = true });
+                    
+                }
+
+                var foodService = serviceProvider.GetRequiredService<IFoodService>();
+                if (foodService.GetAll() == null)
+                {
+                    foodService.Create(new DataAccessLayer.Dtos.FoodDto() { Name = "İnitialize", CategoryID = 1});
+                }
+
+                
+            }
+            host.Run();
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
