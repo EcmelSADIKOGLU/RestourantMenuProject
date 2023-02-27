@@ -8,6 +8,7 @@ namespace RestourantMenu.Web.Services.Abstract
     {
         Task<List<CategoryDto>> GetAllAsync();
         Task<CategoryDto> GetByIdAsync(int id);
+        Task<List<CategoryDto>> GetActiveAsync();
         Task CreateAsync(CategoryDto categoryDto);
         Task UpdateAsync(CategoryDto categoryDto);
         Task DeleteAsync(int id);

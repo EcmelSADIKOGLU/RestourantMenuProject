@@ -34,7 +34,7 @@ namespace RestourantMenu.Web.Areas.Admin.Controllers
         [HttpGet]
         public async Task<IActionResult> AddFood()
         {
-            var categories = await _categoryService.GetAllAsync();
+            var categories = await _categoryService.GetActiveAsync();
             List<SelectListItem> categoryList = new List<SelectListItem>();
             foreach (var item in categories)
             {
@@ -72,7 +72,7 @@ namespace RestourantMenu.Web.Areas.Admin.Controllers
         [HttpGet]
         public async Task< IActionResult> EditFood(int id)
         {
-            var categories = await _categoryService.GetAllAsync();
+            var categories = await _categoryService.GetActiveAsync();
             List<SelectListItem> categoryList = new List<SelectListItem>();
             foreach (var item in categories)
             {

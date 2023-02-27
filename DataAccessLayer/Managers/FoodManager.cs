@@ -65,6 +65,16 @@ namespace DataAccessLayer.Managers
             return foodDtos;
         }
 
+        public FoodDto GetFirst()
+        {
+            var food = _context.Foods.First();
+            var category = _context.Categories.Find(food.CategoryID);
+
+            CategoryDto categoryDto = ObjectMapper.Mapper.Map<CategoryDto>(category);
+            FoodDto foodDto = ObjectMapper.Mapper.Map<FoodDto>(food);
+            foodDto.Categorydto = categoryDto;
+            return foodDto;
+        }
         public FoodDto GetById(int id)
         {
             var food = _context.Foods.Find(id);

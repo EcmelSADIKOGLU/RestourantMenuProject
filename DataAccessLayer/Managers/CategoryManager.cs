@@ -35,7 +35,12 @@ namespace DataAccessLayer.Managers
             }
             return categoryDtos;
         }
-
+        public CategoryDto GetFirst()
+        {
+            var category = _context.Categories.First();
+            var categoryDto = ObjectMapper.Mapper.Map<CategoryDto>(category);
+            return categoryDto;
+        }
         public CategoryDto GetById(int id)
         {
             var category =_context.Categories.Find(id);

@@ -13,6 +13,7 @@ namespace DataAccessLayer.Services
     {
         List<FoodDto> GetAll();
         List<FoodDto> GetByCategoryId(int categoryId);
+        FoodDto GetFirst();
         FoodDto GetById(int id);
         void Create(FoodDto food);
         void Update(FoodDto food);

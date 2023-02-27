@@ -1,0 +1,41 @@
+﻿
+@model GetTodaysFoodDto
+
+<section id="todayfood" class="why-us">
+    <div class="container">
+
+        <div class="section-title">
+            <h2><span>Günün</span> Yemeği</h2>
+            <p>Günün yemeğini alana tatlısı bizden. Bu fırsatı kaçırma...</p>
+        </div>
+
+        <div class="row">
+
+            <div class="col-lg-4">
+                <div class="box">
+                    <span>01</span>
+                    <h4>@Model.Food1.Name</h4>
+                    <p>@Model.Food1.Description</p>
+                </div>
+            </div>
+
+            <div class="col-lg-4 mt-4 mt-lg-0">
+                <div class="box">
+                    <span>02</span>
+                    <h4>@Model.Food2.Name</h4>
+                    <p>@Model.Food2.Description</p>
+                </div>
+            </div>
+
+            <div class="col-lg-4 mt-4 mt-lg-0">
+                <div class="box">
+                    <span>03</span>
+                    <h4> @Model.Food3.Name</h4>
+                    <p>@Model.Food3.Description</p>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</section><!-- End Whu Us Section -->

@@ -10,6 +10,7 @@ namespace DataAccessLayer.Services
     public interface ICategoryService
     {
         List<CategoryDto> GetAll();
+        CategoryDto GetFirst();
         CategoryDto GetById(int id);
         void Create(CategoryDto categoryDto);
         void Update(CategoryDto categoryDto);

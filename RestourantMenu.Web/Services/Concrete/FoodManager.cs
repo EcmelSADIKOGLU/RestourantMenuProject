@@ -26,9 +26,28 @@ namespace RestourantMenu.Web.Services.Concrete
             var response = await _httpClient.GetAsync(foodUri);
             var responseContent = await response.Content.ReadAsStringAsync();
 
-            var FoodDtos = JsonConvert.DeserializeObject<List<FoodDto>>(responseContent);
-            return FoodDtos;
+            var foodDtos = JsonConvert.DeserializeObject<List<FoodDto>>(responseContent);
+            return foodDtos;
         }
+        public async Task<List<FoodDto>> GetActiveAsync()
+        {
+            var response = await _httpClient.GetAsync(foodUri);
+            var responseContent = await response.Content.ReadAsStringAsync();
+
+            var foodDtos = JsonConvert.DeserializeObject<List<FoodDto>>(responseContent);
+
+            var activeFoodDtos = new List<FoodDto>();
+
+            foreach (var foodDto in foodDtos)
+            {
+                if (foodDto.Status)
+                {
+                    activeFoodDtos.Add(foodDto);
+                }
+            }
+            return activeFoodDtos;
+        }
+
 
         public async Task<FoodDto> GetByIdAsync(int id)
         {

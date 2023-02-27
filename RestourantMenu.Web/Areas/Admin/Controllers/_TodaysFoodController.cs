@@ -25,7 +25,7 @@ namespace RestourantMenu.Web.Areas.Admin.Controllers
         [HttpGet]
         public async Task<IActionResult> Index()
         {
-            var foodDtos = await _foodService.GetAllAsync();
+            var foodDtos = await _foodService.GetActiveAsync();
             List<SelectListItem> foodDtoList = new List<SelectListItem>();
             foreach (var item in foodDtos)
             {

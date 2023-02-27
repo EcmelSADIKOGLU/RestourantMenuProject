@@ -20,20 +20,24 @@ namespace RestourantMenuAPI
             {
                 var serviceProvider = scope.ServiceProvider;
                 var categoryService = serviceProvider.GetRequiredService<ICategoryService>();
-                if (categoryService.GetAll() == null)
+                var deneme = categoryService.GetAll();
+                if (categoryService.GetAll().Count == 0)
                 {
-                    categoryService.Create(new DataAccessLayer.Dtos.CategoryDto() { Name = "Tatlı", Status = true });
-                    categoryService.Create(new DataAccessLayer.Dtos.CategoryDto() { Name = "Çorba", Status = true });
+                    categoryService.Create(new DataAccessLayer.Dtos.CategoryDto() { Name = "Kategori", Status = true });
                     
                 }
 
+                var existCategory = categoryService.GetFirst();
+
                 var foodService = serviceProvider.GetRequiredService<IFoodService>();
-                if (foodService.GetAll() == null)
+                if (foodService.GetAll().Count == 0)
                 {
-                    foodService.Create(new DataAccessLayer.Dtos.FoodDto() { Name = "İnitialize", CategoryID = 1});
+                    foodService.Create(new DataAccessLayer.Dtos.FoodDto() { Name = "Yemek", CategoryID = existCategory.CategoryID});
                 }
 
                 
+
+
             }
             host.Run();
         }

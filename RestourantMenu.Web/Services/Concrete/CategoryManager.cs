@@ -28,6 +28,24 @@ namespace RestourantMenu.Web.Services.Concrete
 
             return categoryDtos;
         }
+        public async Task<List<CategoryDto>> GetActiveAsync()
+        {
+            var response = await _httpClient.GetAsync(categoryUri);
+            string responseContent = await response.Content.ReadAsStringAsync();
+            var categoryDtos = JsonConvert.DeserializeObject<List<CategoryDto>>(responseContent);
+
+            var aftifCategoryDtos = new List<CategoryDto>();
+            foreach (var categoryDto in categoryDtos)
+            {
+                if (categoryDto.Status)
+                {
+                    aftifCategoryDtos.Add(categoryDto);
+                }
+            }
+
+            return aftifCategoryDtos;
+        }
+
 
         public async Task<CategoryDto> GetByIdAsync(int id)
         {

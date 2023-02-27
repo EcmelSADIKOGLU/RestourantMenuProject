@@ -1,0 +1,37 @@
+﻿
+@RenderBody()
+
+<!DOCTYPE html>
+<html lang="en">
+
+@await Html.PartialAsync("/Areas/Menu/Views/_MenuLayout/_HeadPartial.cshtml")
+
+
+<body>
+
+    @await Html.PartialAsync("/Areas/Menu/Views/_MenuLayout/_NavbarPartial.cshtml")
+    @await Html.PartialAsync("/Areas/Menu/Views/_MenuLayout/_BannerPartial.cshtml")
+    @await Html.PartialAsync("/Areas/Menu/Views/_MenuLayout/_AboutPartial.cshtml")
+    
+
+    <main id="main">
+
+        
+        @await Component.InvokeAsync("_TodaysFoodPartial")
+        <!-- ======= Menu Section ======= -->
+        @await Component.InvokeAsync("_MenuPartial")
+        <!-- ======= Specials Section ======= -->
+        @await Html.PartialAsync("/Areas/Menu/Views/_MenuLayout/_PhotoPartial.cshtml")
+
+    </main><!-- End #main -->
+
+
+    @await Html.PartialAsync("/Areas/Menu/Views/_MenuLayout/_FooterPartial.cshtml")
+    @await Html.PartialAsync("/Areas/Menu/Views/_MenuLayout/_ScriptPartial.cshtml")
+
+
+
+
+</body>
+
+</html>

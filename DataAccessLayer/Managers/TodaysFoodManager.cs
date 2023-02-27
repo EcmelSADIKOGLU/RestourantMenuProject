@@ -25,7 +25,15 @@ namespace DataAccessLayer.Managers
             var todaysFood = _context.TodaysFoods.FirstOrDefault();
             if (todaysFood == null)
             {
-                _context.TodaysFoods.Add(new TodaysFood());
+                var existFood = _context.Foods.First();
+
+                _context.TodaysFoods.Add(new TodaysFood()
+                {
+                    FoodId1 = existFood.FoodID,
+                    FoodId2 = existFood.FoodID,
+                    FoodId3 = existFood.FoodID
+                });
+
                 todaysFood = _context.TodaysFoods.FirstOrDefault();
             }
 
